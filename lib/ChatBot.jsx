@@ -534,7 +534,7 @@ class ChatBot extends Component {
       hideBotAvatar,
       hideUserAvatar,
       speechSynthesis,
-      onRenderStep,
+      onRenderStep
     } = this.props;
     const { options, component, asMessage } = step;
     const steps = this.generateRenderedStepsById();
