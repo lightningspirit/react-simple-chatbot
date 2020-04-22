@@ -525,7 +525,7 @@ class ChatBot extends Component {
   };
 
   renderStep = (step, index) => {
-    const { renderedSteps } = this.state;
+    const { renderedSteps, onRenderStep } = this.state;
     const {
       avatarStyle,
       bubbleStyle,
@@ -538,6 +538,10 @@ class ChatBot extends Component {
     const { options, component, asMessage } = step;
     const steps = this.generateRenderedStepsById();
     const previousStep = index > 0 ? renderedSteps[index - 1] : {};
+
+    if (onRenderStep) {
+      onRenderStep(step, index);
+    }
 
     if (component && !asMessage) {
       return (
@@ -742,6 +746,7 @@ ChatBot.propTypes = {
   floatingStyle: PropTypes.objectOf(PropTypes.any),
   footerStyle: PropTypes.objectOf(PropTypes.any),
   handleEnd: PropTypes.func,
+  onRenderStep: PropTypes.func,
   headerComponent: PropTypes.element,
   headerTitle: PropTypes.string,
   height: PropTypes.string,
@@ -793,6 +798,7 @@ ChatBot.defaultProps = {
   floatingStyle: {},
   footerStyle: {},
   handleEnd: undefined,
+  onRenderStep: undefined,
   headerComponent: undefined,
   headerTitle: 'Chat',
   height: '520px',
