@@ -525,7 +525,7 @@ class ChatBot extends Component {
   };
 
   renderStep = (step, index) => {
-    const { renderedSteps, onRenderStep } = this.state;
+    const { renderedSteps } = this.state;
     const {
       avatarStyle,
       bubbleStyle,
@@ -533,7 +533,8 @@ class ChatBot extends Component {
       customStyle,
       hideBotAvatar,
       hideUserAvatar,
-      speechSynthesis
+      speechSynthesis,
+      onRenderStep,
     } = this.props;
     const { options, component, asMessage } = step;
     const steps = this.generateRenderedStepsById();
